@@ -46,10 +46,11 @@ def add_contact(address_book: AddressBook) -> Command:
         record = address_book.find(command[0])
         if record and len(command) > 1:
             record.add_phone(command[1])
+            return Event(EventType.PRINT, {"print": f"Phone number for {command[0]} added."})
         else:
             record = Record(command[0])
             if len(command) > 1:
                 record.add_phone(command[1])
             address_book.add_record(record)
-        return Event(EventType.PRINT, {"print": f"Contact {command[0]} added."})
+            return Event(EventType.PRINT, {"print": f"Contact {command[0]} added."})
     return lambda: (select, valifate, action)

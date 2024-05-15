@@ -197,6 +197,7 @@ class AddressBook(UserDict):
         return date
 
     def get_upcoming_birthdays(self):
+        """Get upcoming birthdays for the next week from the address book"""
         today = datetime.today().date()
         upcoming_birthdays = []
         for record in self.data.values():
